@@ -1,0 +1,21 @@
+{
+  "name": "hn-feed",
+  "version": "1.0.0",
+  "private": true,
+  "author": {
+    "David Burgos": "hola@davidburgosonline.com"
+  },
+  "engine": "node 0.12.4",
+  "dependencies": {
+    "body-parser": "1.12.4",
+    "compression": "1.4.4",
+    "connect-multiparty": "1.2.5",
+    "crypto": "0.0.3",
+    "express": "4.12.4",
+    "jade": "1.10.0",
+    "method-override": "2.3.3",
+    "mongoose": "4.0.3",
+    "mongoose-store": "0.2.1",
+    "node-schedule": "^0.2.7"
+  }
+}
