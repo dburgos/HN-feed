@@ -1,0 +1,8 @@
+#!/usr/bin/env node
+
+require('../app/models/db');
+var feed = require('../app/controllers/feed');
+
+if (feed && feed.API && feed.API.load) {
+	feed.API.load({ verbose: true });
+}

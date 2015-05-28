@@ -7,7 +7,8 @@
   },
   "engine": "node 0.12.4",
   "scripts": {
-    "start": "node ./bin/server"
+    "start":    "node ./bin/server",
+    "load-api": "node ./bin/load-api"
   },
   "dependencies": {
     "body-parser": "1.12.4",
@@ -19,6 +20,7 @@
     "method-override": "2.3.3",
     "mongoose": "4.0.3",
     "mongoose-store": "0.2.1",
+    "node-rest-client": "^1.5.1",
     "node-schedule": "^0.2.7"
   }
 }
