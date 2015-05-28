@@ -17,4 +17,6 @@ var postSchema  = new Schema({
   num_comments: Number
 }, { safe: safeOpts });
 
-module.exports    = postSchema;
+var Post = mongoose.model('Post', postSchema);
+
+module.exports    = Post;
