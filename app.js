@@ -7,6 +7,8 @@ var bodyParser      = require('body-parser');
 var methodOverride  = require('method-override');
 var compress        = require('compression');
 var multipart       = require('connect-multiparty');
+var schedule        = require('node-schedule');
+var feed            = require('./app/controllers/feed');
 var app             = express();
 
 // Configuration
@@ -22,5 +24,10 @@ app.use(methodOverride());
 
 // Routes
 require('./app/routes')(app);
+
+// Schedule
+schedule.scheduleJob('0 * * * *', function(){
+  feed.API.load( { verbose: true } );
+});
 
 module.exports = app;
