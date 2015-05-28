@@ -1,0 +1,13 @@
+{
+  "name": "HN-feed",
+  "version": "1.0.0",
+  "authors": [
+    {
+      "David Burgos": "hola@davidburgosonline.com"
+    }
+  ],
+  "private": true,
+  "dependencies": {
+    "bootstrap": "~3.3.4"
+  }
+}
