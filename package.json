@@ -6,6 +6,9 @@
     "David Burgos": "hola@davidburgosonline.com"
   },
   "engine": "node 0.12.4",
+  "scripts": {
+    "start": "node ./bin/server"
+  },
   "dependencies": {
     "body-parser": "1.12.4",
     "compression": "1.4.4",
