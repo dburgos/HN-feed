@@ -1,0 +1,13 @@
+#!/usr/bin/env node
+
+var models = require('../app/models');
+
+if (models && models.Post) {
+  models.Post.remove({}, function(err) {
+    if(err) {
+      console.error("> Error", err);
+    } else {
+      console.info("Remove successful");
+    }
+  });
+}
