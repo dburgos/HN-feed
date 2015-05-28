@@ -7,9 +7,8 @@ var safeOpts    = {
 };
 
 var postSchema  = new Schema({
-  saved_at:     { type: Date, default: Date.now, required: true},
-  created_at:   { type: Date, required: true},
-  created_at_i: { type: Number, required: true},
+  saved_at:     { type: Date, default: Date.now },
+  created_at_i: { type: Number },
   url:          String,
   title:        String,
   story_title:  String,
