@@ -38,7 +38,7 @@ html(lang='en', ng-app="feedApp")
               td(ng-click="openLink($event)").col-xs-2
                 span.date {{ getDateLabel(post) }}
               td.col-xs-1
-                a(ng-href="{{post.url}}", target="_blank").hide.link
+                a(ng-href="{{post.url || post.story_url}}", target="_blank").hide.link
                   i.glyphicon.glyphicon-share
-                a(href="#", ng-click="deletePost($event, post._id)").delete
+                a(ng-click="deletePost($event, post._id)").delete
                   i.glyphicon.glyphicon-trash

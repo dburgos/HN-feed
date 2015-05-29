@@ -12,6 +12,7 @@ var postSchema  = new Schema({
   url:          String,
   title:        String,
   story_title:  String,
+  story_url:    String,
   author:       String,
   num_comments: Number
 }, { safe: safeOpts });
