@@ -15,12 +15,13 @@ html(lang='en', ng-app="feedApp")
     title HN-Feed
 
   body(ng-controller="feedCtrl as feed").fluid-container
-    .col-xs-10.col-xs-offset-1
-      header
+
+    header.col-xs-12
+      .col-xs-10.col-xs-offset-1
         h1 HN-Feed
         h2 We <3 hacker news!
 
-      article
+    article.col-xs-10.col-xs-offset-1
         .loading(ng-if="feed.list == null")
           i.glyphicon.glyphicon-repeat
 
@@ -31,13 +32,13 @@ html(lang='en', ng-app="feedApp")
         table.table(ng-if="feed.list.length > 0")
           tbody
             tr(ng-repeat="post in feed.list")
-              td(ng-click="openLink($event)")
+              td(ng-click="openLink($event)").col-xs-9
                 p {{ post.title || post.story_title }}
-                  span.author {{ post.author }}
-              td(ng-click="openLink($event)")
+                  span.author - {{ post.author }} -
+              td(ng-click="openLink($event)").col-xs-2
                 span.date {{ getDateLabel(post) }}
-              td
-                a(ng-href="{{post.url}}", target="_blank").link
+              td.col-xs-1
+                a(ng-href="{{post.url}}", target="_blank").hide.link
                   i.glyphicon.glyphicon-share
-                a(href="#", ng-click="deletePost(post._id)")
+                a(href="#", ng-click="deletePost($event, post._id)").delete
                   i.glyphicon.glyphicon-trash
