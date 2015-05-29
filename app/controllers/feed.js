@@ -79,15 +79,17 @@ exports.API = {
           created_at_i: res.hits[i].created_at_i,
           url:          res.hits[i].url,
           title:        res.hits[i].title,
+          objectId:     res.hits[i].objectID,
           story_title:  res.hits[i].story_title,
           story_url:    res.hits[i].story_url,
           author:       res.hits[i].author,
           num_comments: res.hits[i].num_comments
         };
 
+        var hasId     = data.objectId;
         var hasUrl    = (data.url   || data.story_url);
         var hasTitle  = (data.title || data.story_title);
-        var isValid   = hasUrl && hasTitle;
+        var isValid   = hasId && hasUrl && hasTitle;
 
         if(isValid) {
           models.Post.create(data);

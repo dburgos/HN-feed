@@ -11,6 +11,7 @@ var postSchema  = new Schema({
   created_at_i: { type: Number },
   url:          String,
   title:        String,
+  objectId:     { type: Number, unique: true },
   story_title:  String,
   story_url:    String,
   author:       String,
