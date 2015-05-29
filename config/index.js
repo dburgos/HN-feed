@@ -1,7 +1,7 @@
 'use strict';
 
-var config 				= {};
+var config        = {};
 
-config.app     		= require('./app');
+config.app        = require('./app');
 
-module.exports 		= config;
+module.exports    = config;

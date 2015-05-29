@@ -7,7 +7,7 @@
   },
   "engine": "node 0.12.4",
   "scripts": {
-    "start":    "node ./bin/server",
+    "server":    "node ./bin/server",
     "load-api": "node ./bin/load-api",
     "clean-db": "node ./bin/clean-db"
   },

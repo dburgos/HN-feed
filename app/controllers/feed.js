@@ -4,12 +4,14 @@ var config          = require("../../config");
 var RESTClient      = require('node-rest-client').Client;
 
 exports.UI = {
+
   list: function(req, res) {
     return res.render('home.jade');
   }
 };
 
 exports.API = {
+
   get: function (req, res) {
 
     var isSingleMode  = req.params.id && req.params.id != "null";
@@ -33,6 +35,7 @@ exports.API = {
       return res.send(200, isSingleMode ? posts[0] : posts);
     });
   },
+
   delete: function(req, res) {
 
     if(!req.params.id) {
@@ -54,6 +57,7 @@ exports.API = {
       }
     });
   },
+
   load: function(params) {
 
     if(params.verbose) { console.info("Feed.API.load() init"); }
