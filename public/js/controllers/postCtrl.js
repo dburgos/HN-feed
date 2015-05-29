@@ -43,11 +43,14 @@
       }
     }
 
-    $scope.deletePost = function(id) {
+    $scope.deletePost = function(event, id) {
       API.Posts.delete(id)
         .success(function(done) {
           if(done) {
-
+            var row = $(event.toElement).parents("tr");
+            row.fadeOut(function() {
+              $(this).remove();
+            });
           }
         });
     }
