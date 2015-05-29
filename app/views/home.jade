@@ -29,12 +29,14 @@ html(lang='en', ng-app="feedApp")
 
         table.table(ng-if="feed.list.length > 0")
             tbody
-              tr(ng-repeat="post in feed.list")
+              tr(ng-repeat="post in feed.list", ng-click="openLink(this)")
                 td
                   p {{ post.title || post.story_title }}
                     span.author {{ post.author }}
                 td
                   span.date {{ getDateLabel(post) }}
                 td
+                  a(ng-href="{{post.url}}", target="_blank").link
+                    i.glyphicon.glyphicon-share
                   a(href="#", ng-click="deletePost('{{post._id}}')")
                     i.glyphicon.glyphicon-trash
