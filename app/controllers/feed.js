@@ -5,11 +5,31 @@ var RESTClient      = require('node-rest-client').Client;
 
 exports.UI = {
   list: function(req, res) {
-    return res.send(200, newAnswer);
+    return res.render('home.jade');
   }
 };
 
 exports.API = {
+  get: function (req, res) {
+
+    var isSingleMode  = req.params.id && req.params.id != "null";
+    var query         = {};
+    var options       = {
+      limit: 100
+    }
+
+    if(isSingleMode) {
+      query._id       = req.params.id;
+      options.limit   = 1;
+    }
+
+    return models.Post.find(query, null, options, function(err, posts) {
+      if (err) {
+        return res.send(500, err)
+      }
+      return res.send(200, isSingleMode ? posts[0] : posts);
+    });
+  },
   load: function(params) {
 
     if(params.verbose) { console.info("Feed.API.load() init"); }
@@ -43,9 +63,6 @@ exports.API = {
     });
   },
   delete: function(req, res) {
-    return res.send(200, true);
-  },
-  get: function (req, res) {
     return res.send(200, true);
   }
 };
