@@ -22,17 +22,19 @@
     $scope.getDateLabel = function(post) {
       var now   = moment();
       var post  = moment(new Date(post.created_at_i*1000));
-      var diff  = now.diff(post, 'days', true);
+      var diff  = now.diff(post, 'hours', true);
 
-      if(diff < 1) {
-        // Same day
-        return post.format("h") + ":" + post.format("mm") + " " + post.format("a");
+      if(diff >= 48) {
+        return post.format("MMM") + " " + post.format("D");
       }
-      if(diff >= 1 && diff < 2) {
+
+      var isYesterday = diff-now.format("h") > 0;
+      if(isYesterday) {
         return "Yesterday";
       }
-      if(diff >= 2) {
-        return post.format("MMM") + " " + post.format("D");
+
+      if(diff < 24) {
+        return post.format("h") + ":" + post.format("mm") + " " + post.format("a");
       }
     }
 
