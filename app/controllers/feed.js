@@ -15,7 +15,10 @@ exports.API = {
     var isSingleMode  = req.params.id && req.params.id != "null";
     var query         = {};
     var options       = {
-      limit: 100
+      limit: 100,
+      sort: {
+        created_at_i: -1
+      }
     }
 
     if(isSingleMode) {
