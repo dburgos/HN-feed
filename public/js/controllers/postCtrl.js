@@ -28,7 +28,7 @@
         return post.format("MMM") + " " + post.format("D");
       }
 
-      var isYesterday = diff-now.format("h") > 0;
+      var isYesterday = diff - parseInt(now.format("H")) > 0;
       if(isYesterday) {
         return "Yesterday";
       }
