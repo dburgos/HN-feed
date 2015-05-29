@@ -30,6 +30,27 @@ exports.API = {
       return res.send(200, isSingleMode ? posts[0] : posts);
     });
   },
+  delete: function(req, res) {
+
+    if(!req.params.id) {
+      return res.send(400, { message: "Validation error: id is required"});
+    }
+
+    var query = {
+      "_id": req.params.id
+    };
+
+    return models.Post.findOneAndRemove(query, function (err, post) {
+      if(!post && !err) {
+        return res.send(404, { message: 'Not found - This post does not exists' });
+      }
+      if (err || post == null) {
+        return res.send(500, false);
+      } else {
+        return res.send(200, true);
+      }
+    });
+  },
   load: function(params) {
 
     if(params.verbose) { console.info("Feed.API.load() init"); }
@@ -61,8 +82,5 @@ exports.API = {
       if(params.verbose) { console.info("> Finish"); }
 
     });
-  },
-  delete: function(req, res) {
-    return res.send(200, true);
   }
 };

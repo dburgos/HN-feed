@@ -4,7 +4,7 @@ module.exports = function(app) {
   var feed          = require('./controllers/feed');
 
   /* API */
-  app.route('/api/feed/:_id?')
+  app.route('/api/feed/:id?')
     .get(feed.API.get)
     .delete(feed.API.delete);
 
@@ -23,6 +23,7 @@ module.exports = function(app) {
 
   // 500
   app.use(function(err, req, res, next){
+    console.log(err);
     res.status(500);
     var data = {
       status: err.status || 500,
