@@ -6,6 +6,7 @@ html(lang='en', ng-app="feedApp")
     link(rel='shortcut icon', href='/img/favicon.png')
     link(rel="stylesheet", type="text/css", href="bower_components/bootstrap/dist/css/bootstrap.min.css")
     link(rel="stylesheet", type="text/css", href="css/style.css")
+    script(src="bower_components/jquery/dist/jquery.min.js")
     script(src="bower_components/angular/angular.min.js")
     script(src="bower_components/moment/moment.js")
     script(src="js/feedApp.js")
@@ -28,15 +29,15 @@ html(lang='en', ng-app="feedApp")
           p Try <code>npm run load-api</code>
 
         table.table(ng-if="feed.list.length > 0")
-            tbody
-              tr(ng-repeat="post in feed.list", ng-click="openLink(this)")
-                td
-                  p {{ post.title || post.story_title }}
-                    span.author {{ post.author }}
-                td
-                  span.date {{ getDateLabel(post) }}
-                td
-                  a(ng-href="{{post.url}}", target="_blank").link
-                    i.glyphicon.glyphicon-share
-                  a(href="#", ng-click="deletePost('{{post._id}}')")
-                    i.glyphicon.glyphicon-trash
+          tbody
+            tr(ng-repeat="post in feed.list")
+              td(ng-click="openLink($event)")
+                p {{ post.title || post.story_title }}
+                  span.author {{ post.author }}
+              td(ng-click="openLink($event)")
+                span.date {{ getDateLabel(post) }}
+              td
+                a(ng-href="{{post.url}}", target="_blank").link
+                  i.glyphicon.glyphicon-share
+                a(href="#", ng-click="deletePost(post._id)")
+                  i.glyphicon.glyphicon-trash

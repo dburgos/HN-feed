@@ -36,8 +36,20 @@
       }
     }
 
-    $scope.openLink = function(row) {
-      angular.element(row).find("a.link").click();
+    $scope.openLink = function(event) {
+      var link = $(event.toElement).parents("tr").find("a.link");
+      if(link && link.length > 0) {
+        link.click();
+      }
+    }
+
+    $scope.deletePost = function(id) {
+      API.Posts.delete(id)
+        .success(function(done) {
+          if(done) {
+
+          }
+        });
     }
 
   }
