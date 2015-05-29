@@ -73,13 +73,16 @@ exports.API = {
       for(var i=0, total=res.hits.length; i<total; i++) {
         var data = {
           created_at_i: res.hits[i].created_at_i,
-          url: res.hits[i].url,
-          title: res.hits[i].title,
-          story_title: res.hits[i].story_title,
-          author: res.hits[i].author,
+          url:          res.hits[i].url,
+          title:        res.hits[i].title,
+          story_title:  res.hits[i].story_title,
+          author:       res.hits[i].author,
           num_comments: res.hits[i].num_comments
         };
-        models.Post.create(data);
+        var isValid = data.url && (data.title || data.story_title);
+        if(isValid) {
+          models.Post.create(data);
+        }
       }
 
       if(params.verbose) { console.info("> Finish"); }
