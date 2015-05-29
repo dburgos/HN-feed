@@ -1,0 +1,40 @@
+header {
+  color: white;
+  background: orange;
+  padding: 2rem 0 3rem 0;
+  margin-bottom: 5rem;
+}
+
+tr:hover {
+  cursor: pointer;
+  background-color: #fafafa;
+}
+
+tr:hover .delete {
+  display: inline-block;
+}
+
+td {
+  padding-top: 2rem !important;
+}
+
+a {
+  font-size: 1.5rem;
+}
+
+.author {
+  color: #999;
+  margin-left: 1rem;
+}
+.delete {
+  display: none;
+}
+
+.loading > i {
+  animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+  from { transform: rotate(0deg);   }
+  to   { transform: rotate(359deg); }
+}
