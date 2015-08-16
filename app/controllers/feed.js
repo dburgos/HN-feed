@@ -30,16 +30,16 @@ exports.API = {
 
     return models.Post.find(query, null, options, function(err, posts) {
       if (err) {
-        return res.send(500, err)
+        return res.status(500).send(err)
       }
-      return res.send(200, isSingleMode ? posts[0] : posts);
+      return res.status(200).send(isSingleMode ? posts[0] : posts);
     });
   },
 
   delete: function(req, res) {
 
     if(!req.params.id) {
-      return res.send(400, { message: "Validation error: id is required"});
+      return res.status(400).send({ message: "Validation error: id is required"});
     }
 
     var query = {
@@ -48,12 +48,12 @@ exports.API = {
 
     return models.Post.findOneAndRemove(query, function (err, post) {
       if(!post && !err) {
-        return res.send(404, { message: 'Not found - This post does not exists' });
+        return res.status(404).send({ message: 'Not found - This post does not exists' });
       }
       if (err || post == null) {
-        return res.send(500, false);
+        return res.status(500).send(false);
       } else {
-        return res.send(200, true);
+        return res.status(200).send(true);
       }
     });
   },
